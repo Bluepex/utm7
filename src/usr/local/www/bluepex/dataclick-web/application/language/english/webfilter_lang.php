@@ -1,0 +1,54 @@
+<?php
+
+// WEBFILTER Categories
+$lang['wf_cat_0'] = "Others";
+$lang['wf_cat_1'] = "Pornografy";
+$lang['wf_cat_2'] = "Music";
+$lang['wf_cat_3'] = "Video";
+$lang['wf_cat_4'] = "Books";
+$lang['wf_cat_5'] = "Job Search";
+$lang['wf_cat_6'] = "Sports";
+$lang['wf_cat_7'] = "Games";
+$lang['wf_cat_8'] = "Entertainment";
+$lang['wf_cat_9'] = "E-learning";
+$lang['wf_cat_10'] = "Chat";
+$lang['wf_cat_11'] = "Newspapers";
+$lang['wf_cat_12'] = "Magazines";
+$lang['wf_cat_13'] = "Animations";
+$lang['wf_cat_14'] = "Tutorials";
+$lang['wf_cat_15'] = "Classfields";
+$lang['wf_cat_16'] = "Dating";
+$lang['wf_cat_17'] = "Curiosities";
+$lang['wf_cat_18'] = "Shopping";
+$lang['wf_cat_19'] = "News";
+$lang['wf_cat_20'] = "Virtual cards";
+$lang['wf_cat_21'] = "Esoterism";
+$lang['wf_cat_22'] = "Webmail";
+$lang['wf_cat_25'] = "Comics";
+$lang['wf_cat_26'] = "TV";
+$lang['wf_cat_27'] = "Recipes";
+$lang['wf_cat_28'] = "Weapons";
+$lang['wf_cat_29'] = "Auctions";
+$lang['wf_cat_30'] = "Travelling";
+$lang['wf_cat_31'] = "Pets";
+$lang['wf_cat_32'] = "Hacking";
+$lang['wf_cat_33'] = "Movies";
+$lang['wf_cat_34'] = "Photography";
+$lang['wf_cat_35'] = "Airlines";
+$lang['wf_cat_36'] = "Arts";
+$lang['wf_cat_37'] = "Cars";
+$lang['wf_cat_38'] = "Banking";
+$lang['wf_cat_39'] = "Blogs";
+$lang['wf_cat_40'] = "Drugs";
+$lang['wf_cat_41'] = "Social networks";
+$lang['wf_cat_42'] = "Health";
+$lang['wf_cat_43'] = "Sects and cults";
+$lang['wf_cat_44'] = "Advertisement banners";
+$lang['wf_cat_45'] = "Proxy tunnels";
+$lang['wf_cat_46'] = "Search engines";
+$lang['wf_cat_47'] = "Violence";
+$lang['wf_cat_48'] = "Web portals";
+$lang['wf_cat_49'] = "Nazism and hate crimes";
+$lang['wf_cat_50'] = "Download sites";
+$lang['wf_cat_99'] = "Others";
+

@@ -1,0 +1,30 @@
+.modal-backdrop { background-color:#fff; }
+
+/* Alert Warning */
+.modal-alert-warning .modal-content {background-color: #ffd5ac; border: 2px solid rgb(255, 236, 218);}
+.modal-alert-warning .modal-header {border-bottom: 1px solid #fbc48e;}
+.modal-alert-warning .modal-footer {border-top: 1px solid #fbc48e;}
+.modal-alert-warning #btn-save {background-color: #ff8610;border-color: #ea7400;}
+.modal-alert-warning #btn-save:hover {opacity:0.8;}
+
+/* Alert Info */
+.modal-alert-info .modal-content {background-color: #daecff;border: 2px solid rgb(250, 253, 255);}
+.modal-alert-info .modal-header {border-bottom: 1px solid #b7daff;}
+.modal-alert-info .modal-footer {border-top: 1px solid #b7daff;}
+.modal-alert-info #btn-save {background-color: #56a8ff;border-color: #3999ff;}
+.modal-alert-info #btn-save:hover {opacity:0.8;}
+
+/* Alert Danger */
+.modal-alert-danger .modal-content {background-color: #ffd2d2;border: 2px solid rgb(255, 244, 244);}
+.modal-alert-danger .modal-header {border-bottom: 1px solid #ffaeae;}
+.modal-alert-danger .modal-footer {border-top: 1px solid #ffaeae;}
+.modal-alert-danger #btn-save {background-color: #ff4040;border-color: #f00;}
+.modal-alert-danger #btn-save:hover {opacity:0.8;}
+
+/* Alert Success */
+.modal-alert-success .modal-content {background-color: #dbffc9;border: 2px solid rgb(253, 255, 252);}
+.modal-alert-success .modal-header {border-bottom: 1px solid #b4f395;}
+.modal-alert-success .modal-footer {border-top: 1px solid #b4f395;}
+.modal-alert-success #btn-save {background-color: #69b742; border-color: #58aa2f;}
+.modal-alert-success #btn-save:hover {opacity:0.8;}
+
