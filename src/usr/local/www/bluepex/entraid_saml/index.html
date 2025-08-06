@@ -1,0 +1,99 @@
+
+<!--
+ /* ====================================================================
+ * Copyright (C) BluePex Security Solutions - All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Desenvolvimento <desenvolvimento@bluepex.com>, 2016
+ *
+ * ====================================================================
+ *
+ */
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+		<title>BluePex WebFilter - Conteúdo Bloqueado!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<script src="../../../vendor/jquery/jquery-1.12.0.min.js"></script>
+		<script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+		<style>
+			html { height: 100%; box-sizing: border-box; }
+			body { position: relative; margin: 0; min-height: 100%; }
+			#wrap { min-height:100%; position:relative; padding-bottom:100px; }
+			#content { margin-top:-300px; margin-left:50px; width: 450px; font-size:16px; }
+			#content h1 { color:#007dc5; }
+			#content p { text-align: justify; text-justify: inter-word; }
+			#content textarea { border:2px solid #333; border-radius:0 }
+			#content button { border-radius:0; width:100% }
+			#img-cloud { background: url("../../../images/cloud-access.png"); width:100%; height:515px; background-size: 100%; background-repeat: no-repeat; }
+			#footer { position: absolute; right: 0; bottom: 0; left: 0; padding: 25px; background-color: #007dc5; text-align: center; margin-top:10px; min-height:80px; }
+			@media only screen and (max-width : 768px) {
+				body { background: #fff; }
+				#content { top:inherit; position:inherit; margin:0; width: 100%; font-size:14px; }
+				#img-cloud { height:240px }
+			}
+			@media only screen and (max-width : 480px) { #img-cloud { height:150px } }
+			@media only screen and (max-width : 320px) { #img-cloud { height:100px } }
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div id="img-cloud"></div>
+					</div>
+					<div id="content">
+						<h1>Logar com Microsoft SSO</h1>
+						<br>
+						<a href="signup.php">Sign Up using your Microsoft Account</a>
+						<table>
+							<tbody>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<img src="../../../images/logotipo-tecnology.png" />
+		</div>
+	</body>
+</html>
+
+
+<script>
+function getLocalIP(callback) {
+	// Creates a new RTCPeerConnection object
+	var rtc = new RTCPeerConnection({ iceServers: [] });
+	var localIPs = [];
+
+	// Defines the callback for each ICE candidate
+	rtc.onicecandidate = function (event) {
+		if (event.candidate) {
+			// Extract the IP from the candidate address
+			var parts = event.candidate.candidate.split(' ');
+			var ip = parts[4];
+			if (localIPs.indexOf(ip) === -1) {
+				localIPs.push(ip);
+			}
+		} else {
+			// When there are no more candidates, call the callback with the list of IPs found
+			callback(localIPs);
+		}
+	};
+
+	// Create an offer and wait for the response to start the discovery process
+	rtc.createDataChannel('');
+	rtc.createOffer().then(function (offer) {
+		return rtc.setLocalDescription(offer);
+	}).catch(function (error) {
+		alert('Error creating offer:' + error);
+	});
+}
+</script>
