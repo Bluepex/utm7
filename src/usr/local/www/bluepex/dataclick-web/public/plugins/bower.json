@@ -1,0 +1,13 @@
+{
+  "name": "UTM DataClick",
+  "version": "1.0",
+  "directory" : "./",
+  "dependencies": {
+    "echarts": "latest",
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "eonasdan-bootstrap-datetimepicker": "latest",
+    "components-font-awesome": "latest"
+  },
+  "private": true
+}
