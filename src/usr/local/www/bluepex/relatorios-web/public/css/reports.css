@@ -1,0 +1,27 @@
+header { border-bottom: 1px solid #333; padding:10px; }
+header #datetime { font-size:10px }
+header .title { font-size:16px; font-weight:normal }
+#customer-logo { height:30px }
+#bluepex-logo { height:15px; margin-bottom:5px }
+
+#info table { font-size:10px; }
+#info { border-bottom:1px solid #333; margin-bottom:10px; }
+
+table { font-family: "Arial" }
+table.table-default { width:100%; font-size:11px }
+table.table-default thead th, table.table-default tbody td { border:0px solid #eee; padding:3px; height:20px }
+table.table-default thead th { background-color:#b9deff; font-weight:normal }
+table.table-default { 
+    border-spacing: 3px;
+    border-collapse: separate;
+}
+table.list tbody tr:nth-child(odd) {
+   background-color: #eee;
+}
+
+table.list-light tbody tr:nth-child(odd) {
+   background-color: #f9f9f9;
+}
+.no-color { background:none }
+
+
