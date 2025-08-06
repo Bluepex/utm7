@@ -1,0 +1,8 @@
+--index-url https://pypi.python.org/simple/
+
+docopt==0.6.2
+pyfiglet==0.7.5
+PyYAML==5.4
+requests==2.20.0
+terminaltables==3.1.0
+pyzipper==0.3.5

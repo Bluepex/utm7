@@ -1,0 +1,221 @@
+#Generate tmp ugid files
+if [ ! -e /usr/local/share/suricata/ugid_ignore ]
+then
+    echo "8.8.8.8" > /usr/local/share/suricata/ugid_ignore
+fi
+if [ ! -e /usr/local/share/suricata/ugid_ignore_local ]
+then
+    echo "8.8.8.8" > /usr/local/share/suricata/ugid_ignore_local
+fi
+ignoreIps=`cat /usr/local/share/suricata/ugid_ignore | sed -e "s/ /|/g"`
+ignoreIpsLocal=`cat /usr/local/share/suricata/ugid_ignore_local | sed -e "s/ /|/g"`
+
+# Generate by Block traffic
+files=`ls /var/log/suricata/*/block.log`
+rm -rf /tmp/ugid:*
+
+if [ 0 -ne `ls /var/log/suricata/*/block.log | wc -l` ]
+then
+
+    for file_now in $files
+    do
+        awk '{ for(i=0; i<=NF; ++i) printf $i""FS; print "" }' $file_now > /tmp/tmp_blocks
+        file_now="/tmp/tmp_blocks"
+        for gid_sid_now in `awk -F" " '{print $5}' $file_now | sed -e 's/\[/:/g' | sed -e 's/\]/:/g' | awk -F":" '{print $2":"$3}' | sort | uniq`
+        do
+            if [ ! -z `echo $gid_sid_now | awk -F":" '{print $1}' | sed -e 's/[^0-9]*//g'` ]
+            then
+                number_file=""
+                if [ 1 -eq `echo $gid_sid_now | awk -F":" '{print $1}'` ]
+                then    
+                    number_file=`echo $gid_sid_now | awk -F":" '{print $1$2}'`
+                else
+                    number_file=`echo $gid_sid_now | awk -F":" '{print $1}'`
+                fi 
+                if [ ! -e  /tmp/ugid:$number_file.tmp ]
+                then
+                    touch /tmp/ugid:$number_file.tmp
+                fi
+                grep -r "\[$gid_sid_now" $file_now | awk -F" " '{print $NF}' | awk -F":" '{print $1}' | sort | uniq >> /tmp/ugid:$number_file.tmp
+
+                grep -Ev "$ignoreIps" /tmp/ugid:$number_file.tmp > /tmp/ugid:$number_file.txt
+                grep -Ev "$ignoreIpsLocal" /tmp/ugid:$number_file.txt > /tmp/ugid:$number_file.tmp
+                mv /tmp/ugid:$number_file.tmp /tmp/ugid:$number_file.txt
+            fi
+        done
+        rm -rf $file_now
+    done
+
+    #Generate directory ugid files to comparete in time
+    if [ ! -d /usr/local/share/suricata/rules_fapp_ugid  ]
+    then
+        mkdir /usr/local/share/suricata/rules_fapp_ugid/
+    fi
+
+    # Generate a final file and copy
+    if [ 0 -ne `find /usr/local/share/suricata/rules_fapp_ugid/ -type f | grep 'ugid:' -c` ]
+    then
+        files=`find /usr/local/share/suricata/rules_fapp_ugid/ -type f | grep 'ugid:'`
+        for file_now in $files
+        do
+            file_tmp=`echo $file_now | awk -F"/" '{print $NF}'`
+            if [ -f /tmp/$file_tmp ]
+            then
+                cat /tmp/$file_tmp > /tmp/$file_tmp.tmp
+            fi
+
+            cat $file_now >> /tmp/$file_tmp.tmp
+            cat /tmp/$file_tmp.tmp | sort | uniq > /tmp/$file_tmp
+            rm /tmp/$file_tmp.tmp
+        done
+    fi
+
+    if [ 0 -ne `ls /tmp/ | grep ugid: -c` ]
+    then
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules_fapp_ugid/
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules_fapp/
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules/
+        rm -rf /tmp/ugid:*
+    fi
+
+    for table in `pfctl -sT | grep fapp2c`
+    do
+        pfctl -t $table -T delete -f /usr/local/share/suricata/ugid_ignore
+    done   
+    
+fi
+
+#Generate By alerts traffic
+files=`ls /var/log/suricata/*/alerts.log`
+rm -rf /tmp/ugid:*
+
+if [ 0 -ne `ls /var/log/suricata/*/alerts.log | wc -l` ]
+then
+    for file_now in $files
+    do
+        awk '{ for(i=0; i<=NF; ++i) printf $i""FS; print "" }' $file_now > /tmp/tmp_alerts
+        file_now="/tmp/tmp_alerts"
+        for gid_sid_now in `awk -F" " '{print $3}' $file_now | grep -Ev 'wDrop|Drop' | sed -e 's/\[/:/g' | sed -e 's/\]/:/g' | awk -F":" '{print $2":"$3}' | sort | uniq`
+        do
+            if [ ! -z `echo $gid_sid_now | awk -F":" '{print $1}' | sed -e 's/[^0-9]*//g'` ]
+            then
+                number_file=""
+                if [ 1 -eq `echo $gid_sid_now | awk -F":" '{print $1}'` ]
+                then    
+                    number_file=`echo $gid_sid_now | awk -F":" '{print $1$2}'`
+                else
+                    number_file=`echo $gid_sid_now | awk -F":" '{print $1}'`
+                fi 
+
+                if [ ! -e  /tmp/ugid:$number_file.tmp ]
+                then
+                    touch /tmp/ugid:$number_file.tmp
+                fi
+                grep -r "\[$gid_sid_now" /tmp/tmp_alerts | awk -F" " '{print $NF}' | awk -F":" '{print $1}' | sort | uniq >> /tmp/ugid:$number_file.tmp
+                grep -Ev "$ignoreIps" /tmp/ugid:$number_file.tmp > /tmp/ugid:$number_file.txt
+                grep -Ev "$ignoreIpsLocal" /tmp/ugid:$number_file.txt > /tmp/ugid:$number_file.tmp
+                mv /tmp/ugid:$number_file.tmp /tmp/ugid:$number_file.txt
+            fi
+        done
+        rm -rf $file_now
+    done
+
+    #Generate directory ugid files to comparete in time
+    if [ ! -d /usr/local/share/suricata/rules_fapp_ugid  ]
+    then
+        mkdir /usr/local/share/suricata/rules_fapp_ugid/
+    fi
+
+    # Generate a final file and copy
+    if [ 0 -ne `find /usr/local/share/suricata/rules_fapp_ugid/ -type f | grep 'ugid:' -c` ]
+    then
+        files=`find /usr/local/share/suricata/rules_fapp_ugid/ -type f | grep 'ugid:'`
+        for file_now in $files
+        do
+            file_tmp=`echo $file_now | awk -F"/" '{print $NF}'`
+            if [ -f /tmp/$file_tmp ]
+            then
+                cat /tmp/$file_tmp > /tmp/$file_tmp.tmp
+            fi
+
+            cat $file_now >> /tmp/$file_tmp.tmp
+            cat /tmp/$file_tmp.tmp | sort | uniq > /tmp/$file_tmp
+            rm /tmp/$file_tmp.tmp
+        done
+    fi
+
+    if [ 0 -ne `ls /tmp/ | grep ugid: -c` ]
+    then
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules_fapp_ugid/
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules_fapp/
+        cp -r /tmp/ugid:* /usr/local/share/suricata/rules/
+        rm -rf /tmp/ugid:*
+    fi
+
+    for table in `pfctl -sT | grep fapp2c`
+    do
+        pfctl -t $table -T delete -f /usr/local/share/suricata/ugid_ignore
+    done   
+    
+fi
+
+
+# Renomear arquivos que devem ser ignorados
+if [ ! -e /usr/local/share/suricata/ignore_ugid_file ]
+then
+    touch /usr/local/share/suricata/ignore_ugid_file
+fi
+
+for number_file in `cat /usr/local/share/suricata/ignore_ugid_file`
+do
+
+    if [ -e /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt ]
+    then
+        cat /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt >> /tmp/ugid:$number_file.txt
+        rm /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt
+    fi
+
+    if [ -e /usr/local/share/suricata/rules_fapp/ugid:$number_file.txt ]
+    then
+        cat /usr/local/share/suricata/rules_fapp/ugid:$number_file.txt >> /tmp/ugid:$number_file.txt
+        rm /usr/local/share/suricata/rules_fapp/ugid:$number_file.txt
+    fi
+
+    if [ -e /usr/local/share/suricata/rules/ugid:$number_file.txt ]
+    then
+        cat /usr/local/share/suricata/rules/ugid:$number_file.txt >> /tmp/ugid:$number_file.txt
+        rm /usr/local/share/suricata/rules/ugid:$number_file.txt
+    fi
+
+    if [ -e /tmp/ugid:$number_file.txt ]
+    then
+        if [ -e /usr/local/share/suricata/rules_fapp_ugid/ignore_ugid:$number_file.txt ]
+        then
+            cat /usr/local/share/suricata/rules_fapp_ugid/ignore_ugid:$number_file.txt >> /tmp/ugid:$number_file.txt
+        fi
+        cat /tmp/ugid:$number_file.txt | sort | uniq > /tmp/ugid:$number_file.tmp
+        mv /tmp/ugid:$number_file.tmp /tmp/ugid:$number_file.txt
+        cp /tmp/ugid:$number_file.txt /usr/local/share/suricata/rules_fapp_ugid/ignore_ugid:$number_file.txt
+        rm /tmp/ugid:$number_file.txt
+    fi
+
+done
+
+
+# Retornar arquivo ugid
+if [ ! -e /usr/local/share/suricata/return_ugid_file ]
+then
+    touch /usr/local/share/suricata/return_ugid_file
+fi
+
+for number_file in `cat /usr/local/share/suricata/return_ugid_file`
+do
+
+    if [ -e /usr/local/share/suricata/rules_fapp_ugid/ignore_ugid:$number_file.txt ]
+    then
+        mv /usr/local/share/suricata/rules_fapp_ugid/ignore_ugid:$number_file.txt /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt
+        cp /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt /usr/local/share/suricata/rules_fapp/ugid:$number_file.txt
+        cp /usr/local/share/suricata/rules_fapp_ugid/ugid:$number_file.txt /usr/local/share/suricata/rules/ugid:$number_file.txt
+    fi
+
+done

@@ -1,0 +1,583 @@
+[
+	{
+		"classification": "blendr-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "hbo-brasil-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "supremocontrol-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "whatsapp-imagens-videos-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "tiktok-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "likee-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "disney-plus-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "shazam-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "anitube-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "amazon-music-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "sieg-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "sieg-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "blendr-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "skout-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "four-shared-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "americanas-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "mercadolivre-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "magazineluiza-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "spotify-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "neenbo-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "thepiratebay-group",
+		"level": "bluepex",
+		"color": "#e71837"
+	},
+	{
+		"classification": "gmail-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "teamviewer-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "anydesk-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "instagram-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "messenger-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "globoesporte-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+    {
+		"classification": "globo-play-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+    {
+		"classification": "starzplay-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "tinder-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "terra-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "badoo-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "netflix-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "primevideo-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "hbo-go-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "eicar-group",
+		"level": "bluepex",
+		"color": "#e71837"
+	},
+	{
+		"classification": "google-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "PlayStore-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "whatsapp-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "yahoo-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "microsoft-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "telegram-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "linkedin-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "skype-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "facebook-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "facebook-instagram-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+
+	{
+		"classification": "twitter-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "globo-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "uol-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+	{
+		"classification": "deezer-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "utorrent-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "bittorrent-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "pornhub-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "xvideos-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "twitch-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "youtube-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "viadeo-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "Not Suspicious Traffic",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Decode of an RPC Query",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "A TCP connection was detected",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Detection of a Network Scan",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Generic Protocol Command Decode",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Generic ICMP event",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Attempt to login by a default username and password",
+		"level": "low_risk",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Attempted Information Leak",
+		"level": "attention",
+		"color": "#008080"
+	},
+	{
+		"classification": "Denial of Service",
+		"level": "attention",
+		"color": "#008080"
+	},
+	{
+		"classification": "Attempted Denial of Service",
+		"level": "attention",
+		"color": "#008080"
+	},
+	{
+		"classification": "Attempted User Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Attempted Administrator Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Attempted User Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Executable code was detected",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "A system call was detected",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Detection of a non-standard protocol or event",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Misc activity",
+		"level": "attention",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "Possibly Unwanted Program Detected",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Crypto Currency Mining Activity Detected",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "vpndetected-group",
+		"level": "attention",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "P2ptorrent-group",
+		"level": "attention",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Successful User Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Unsuccessful User Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Successful Administrator Privilege Gain",
+		"level": "attention",
+		"color": "#e71837"
+	},
+	{
+		"classification": "SCORE! Get the lotion!",
+		"level": "attention",
+		"color": "#008080"
+	},
+	{
+		"classification": "Nao reconhecidos",
+		"level": "warning",
+		"color": "#FF0000"
+	},
+	{
+		"classification": "Unknown Traffic",
+		"level": "warning",
+		"color": "#FF0000"
+	},
+	{
+		"classification": "Potentially Bad Traffic",
+		"level": "warning",
+		"color": "#680363"
+	},
+
+	{
+		"classification": "Trafego-Tor",
+		"level": "warning",
+		"color": "#680363"
+	},
+
+	{
+		"classification": "Ransomware Traffic",
+		"level": "warning",
+		"color": "#680363"
+	},
+	
+	{
+		"classification": "Phishing Traffic",
+		"level": "warning",
+		"color": "#680363"
+	},	
+	
+	{
+		"classification": "Information Leak",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "A suspicious string was detected",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "A suspicious filename was detected",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "An attempted login using a suspicious username was detected",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "A client was using an unusual port",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Detection of a Denial of Service Attack",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "access to a potentially vulnerable web application",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Misc Attack",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Device Retrieving External IP Address Detected",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Possible Social Engineering Attempted",
+		"level": "warning",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Large Scale Information Leak",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "A Network Trojan was detected",
+		"level": "danger",
+		"color": "#680363"
+	},
+	{
+		"classification": "Web Application Attack",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "SCORE! Get the lotion!",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Potential Corporate Privacy Violation",
+		"level": "danger",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "starzplay-group",
+		"level": "danger",
+		"color": "#ffa500"
+	},
+    {
+		"classification": "filmplay-group",
+		"level": "danger",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "adservers-ips-list-group",
+		"level": "danger",
+		"color": "#ffa500"
+	},
+	{
+		"classification": "Targeted Malicious Activity was Detected",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Exploit Kit Activity Detected",
+		"level": "danger",
+		"color": "#680363"
+	},
+	{
+		"classification": "Domain Observed Used for C2 Detected",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "Successful Credential Theft Detected",
+		"level": "danger",
+		"color": "#e71837"
+	},
+	{
+		"classification": "undefined",
+		"level": "bluepex",
+		"color": "#FF4500"
+	},
+	{
+		"classification": "mega-download-group",
+		"level": "bluepex",
+		"color": "#ffa500"
+	},
+    {
+		"classification": "vimeo-group",
+		"level": "bluepex",
+		"color": "#2baf2b"
+	},
+    {
+		"classification": "playstation-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	},
+	{
+		"classification": "xbox-live-group",
+		"level": "bluepex",
+		"color": "#3b5998"
+	}
+]
+

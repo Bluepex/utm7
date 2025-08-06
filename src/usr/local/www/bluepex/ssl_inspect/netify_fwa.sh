@@ -1,0 +1,1 @@
+/usr/local/bin/python3.8 /usr/local/share/netify-fwa/nfa_main.py -d

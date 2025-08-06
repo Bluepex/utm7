@@ -1,0 +1,1 @@
+nc -U /usr/local/var/run/netifyd/netifyd.sock > /tmp/inspect_ssl
