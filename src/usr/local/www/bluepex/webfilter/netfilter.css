@@ -1,0 +1,46 @@
+table.customlist {
+	border-collapse: collapse;
+}
+td.customlist {
+	padding-right: 1ex;
+	background-color: white;
+	border: 1px solid black;
+}
+th.customlist {
+	padding: 0 1ex;
+	background-color: white;
+	border: 1px solid black;
+}
+table.horarios {
+    border-collapse: collapse;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+table.horarios th.dia,
+table.horarios th.hora {
+    padding-right: 4px;
+    font-size: 12px;
+    font-weight: normal;
+    cursor: pointer;
+}
+table.horarios th.dia:hover,
+table.horarios th.hora:hover {
+    text-decoration: underline;
+}
+table.horarios td {
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+table.horarios td.selected {
+    background: #aaf;
+}
+table.horarios.disabled th {
+    color: #ccc;
+}
+table.horarios.disabled th:hover {
+    text-decoration: none;
+}
+table.horarios.disabled td {
+    background: #eee;
+}

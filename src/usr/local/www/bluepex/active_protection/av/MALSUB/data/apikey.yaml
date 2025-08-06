@@ -1,0 +1,22 @@
+--- # malsub API keys
+
+# Service:
+#    apikey: fixed entry denoting that what follows is the API key pair of the
+#               term and the key itself
+#    user: optional entry of the user pair
+#        term: user
+
+HybridAnalysis:
+    apikey:
+        api-key: 4jv0g9yg6afd32b9xa8ydmzx89627403zp7rnhya592fd682zxfjends7663a8f4
+MalwareBazaar:
+    apikey:
+        apikey: 7d7b116e36e98f55a43b63e6a0a771dd
+PhishTank:
+    apikey:
+        app_key: 9b872c1489e4436823794cfa05f215f08c49d2ab1ecf3b06e3d12610dcbbf2b9
+VirusTotal:
+    apikey:
+        apikey: f6ad46513a86d3eb97f0831014f1ecd914a9183e6dbb93e218450a221dfd89bd
+
+... # fim das chaves de API
