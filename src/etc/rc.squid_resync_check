@@ -1,0 +1,5 @@
+#!/usr/local/bin/php-cgi -f
+<?php
+	require_once("squid.inc");
+	squid_resync();
+?>
