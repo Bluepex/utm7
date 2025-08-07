@@ -1,0 +1,47 @@
+addr: "0.0.0.0:53" # the address luna-dns will bind to
+network: "udp" # luna-dns server protocol (udp or tcp supported)
+cache_ttl: 14400 # after how long the cached data is cleared (expressed in seconds)
+
+# if a valid file path is set the logs will be written to that file
+# leave empty to disable log file
+log_file: "dns.log"
+
+# remote dns servers to forward requests to (if not matching custom hosts)
+dns:
+  - addr: "8.8.8.8:53" # remote dns addr string
+    network: "tcp" # remote dns protocol (udp or tcp supported)
+  - addr: "8.8.4.4:53"
+    network: "udp"
+
+# custom hosts entries
+hosts:
+  - host: google.com # custom host domain or pattern (wildcards supported)
+    ip: 127.0.1.1 # custom host ip
+  - host: "test.com"
+    ip: 192.168.168.1
+  - host: "*.test.com" # wildcard pattern example
+    ip: 192.168.168.1
+  #- host: "*.facebook.com" # wildcard pattern example
+  #  ip: 127.0.0.1
+
+# luna-dns supports blocklists both from local files or remote URI
+# each blocklist will be updated every 12 hours.
+# Blocklists must contain only one domain name per line.
+# Every blocked record resolves to 0.0.0.0
+# ex.
+# google.com
+# test.com
+# ...
+blocklists:
+  - file:///usr/local/pkg/dnsprotect/domains.txt
+  - file:///usr/local/pkg/dnsprotect/socialnetwork.txt
+  - http://sandbox.bluepex.com/dnsprotect/adservers1.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/blacklist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/hosts_browser.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/porn_list1.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  #- "http://sandbox.bluepex.com/dnsprotect/porn_list2.php?hostformat=hosts&showintro=0&mimetype=plaintext" #biglist
+  - http://sandbox.bluepex.com/dnsprotect/porn_facebook.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/malware1.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/malware2.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/malware3.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - http://sandbox.bluepex.com/dnsprotect/phishing1.php?hostformat=hosts&showintro=0&mimetype=plaintext

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--copyright>
+ /* ====================================================================
+ * Copyright (C) BluePex Security Solutions - All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Desenvolvimento <desenvolvimento@bluepex.com>, 2015
+ *
+ * ====================================================================
+ *
+ */
+<copytight-->
+<coregui_master>
+<version>2.0</version>
+
+<include>nf_config.inc</include>
+
+<title>BluePex Web Filter</title>
+
+<tab>
+	<label>Rules</label>
+	<interface>nf_content_rules.xml</interface>
+</tab>
+<tab>
+	<label>Whitelist</label>
+	<interface>nf_content_white.xml</interface>
+</tab>
+<tab>
+	<label>Blacklist</label>
+	<interface>nf_content_black.xml</interface>
+</tab>
+<tab>
+	<label>Custom lists</label>
+	<interface>nf_content_custom.xml</interface>
+</tab>
+<tab>
+	<label>Quarantine</label>
+	<url>/webfilter/wf_quarantine.php</url>
+</tab>
+<tab>
+	<label>Extensions</label>
+	<url>/webfilter/wf_block_ext.php</url>
+</tab>
+<tab>
+	<label>Block ADS</label>
+	<url>/webfilter/wf_ad_block.php</url>
+</tab>
+<tab>
+	<label>Settings</label>
+	<url>/webfilter/wf_content_settings.php</url>
+</tab>
+
+</coregui_master>
+

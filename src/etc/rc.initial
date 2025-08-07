@@ -29,6 +29,43 @@ trap : INT
 trap : QUIT
 trap : ILL
 
+unset do_sleep
+
+trap '' INT TSTP
+
+# User 2AF
+clear
+
+if [ `/usr/local/bin/php /usr/local/sbin/bp_confirm_qrcode.php confirm "${USER}"` = 'ok' ]
+then
+	file_output=/tmp/login_2afqrcode`date +"%s"`
+	dialog --title "2AF Autentication" --inputbox "" 0 0 2>$file_output
+	value_output=`cat $file_output`
+	rm $file_output
+	if [ `/usr/local/bin/php /usr/local/sbin/bp_confirm_qrcode.php test "${USER}" "${value_output}"` = 'err' ]
+	then
+		kill -9 `echo $$`
+		clear
+		exit
+	fi
+fi
+
+clear
+
+if [ -f /etc/rc.local ]; then
+	if ! ps auxwww | egrep -q '[r]c.local$'; then
+		echo ">>> Launching rc.local in background..."
+		sh /etc/rc.local &
+		do_sleep=1
+	fi
+	if [ -f /etc/rc.local.running ] && \
+	    ! ps auxwww | egrep -q '[r]c.local.running$'; then
+		[ -n "${do_sleep}" ] && sleep 1
+		echo ">>> Launching rc.local.running in background..."
+		sh /etc/rc.local.running &
+	fi
+fi
+
 # Parse command line parameters
 while [ $# -gt 0 ]; do
 	case $1 in
@@ -116,7 +153,55 @@ case ${opmode} in
 	/etc/rc.initial.ping
 	;;
 8)
-	/bin/tcsh
+	if [ ! -f /etc/block_shell ]
+	then
+		echo false > /etc/block_shell
+	fi
+	if [ `cat /etc/block_shell` == 'true' ]
+	then
+		counterExit=0
+		while true
+		do
+			passShell="false"
+			exec 3>&1
+			resultaf=$(dialog --title "Counter-code" --passwordbox "Enter counter code to access shell command line (Password not show)" 0 0 2>&1 1>&3)
+			exec 3>&-
+			if [ -f /var/db/.passModal ]
+			then
+				if [ `cat /var/db/.passModal` == "$resultaf" ]
+				then
+					passShell="true"
+				fi
+			fi
+			if [ -f /var/db/.passModal ]
+			then
+				if [ `cat /var/db/.passModalTemp` == "$resultaf" ]
+				then
+					passShell="true"
+				else
+					counterExit=$(($counterExit+1))
+				fi
+			fi
+			if [ "" == "$resultaf" ]
+			then
+				clear
+				break
+			fi
+			if [ $counterExit -eq 3 ]
+			then
+				clear
+				break
+			fi
+			if [ $passShell == "true" ]
+			then
+				clear
+				/bin/tcsh
+				break
+			fi
+		done
+	else
+		/bin/tcsh
+	fi
 	;;
 9)
 	/usr/local/sbin/pftop

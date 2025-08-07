@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+<config>nf_protocol_rules</config>
+
+<include>nf_widgets.inc</include>
+<include_javascript>netfilter.js</include_javascript>
+
+<element>
+	<type>table</type>
+	<buttons>move,edit,delete,add</buttons>
+    <no_entries_text>No protocol rules are currently defined.&lt;br /&gt;All traffic will be allowed until you add a rule.</no_entries_text>
+
+	<on_validate_event>NetfilterProtocolRulesValidate</on_validate_event>
+	<on_apply_event>NetfilterProtocolRulesResync</on_apply_event>
+
+    <widget>
+        <type>checkbox</type>
+        <name>disabled</name>
+        <label>Disabled</label>
+        <caption>&lt;strong&gt;Disable this rule&lt;/strong&gt;</caption>
+        <description>Set this option to disable this rule without removing it from the list</description>
+        <not_in_table/>
+    </widget>
+	<widget>
+		<type>select</type>
+		<name>type</name>
+		<label>Match</label>
+		<description>Select how this rule will match the clients.</description>
+		<value>ip</value>
+		<option>
+			<name>default</name>
+			<label>All</label>
+		</option>
+		<option>
+			<name>ip</name>
+			<label>IP address</label>
+		</option>
+		<option>
+			<name>range</name>
+			<label>IP range</label>
+		</option>
+		<option>
+			<name>subnet</name>
+			<label>Subnet</label>
+		</option>
+		<value_enable>ip|ip,range|range,subnet|subnet</value_enable>
+		<value_disable>ip|subnet,ip|range,range|ip,range|subnet,subnet|ip,subnet|range,default|ip,default|range,default|subnet</value_disable>
+		<required/>
+	</widget>
+	<widget>
+		<type>ip</type>
+		<name>ip</name>
+		<label>IP address</label>
+		<description>For matching by IP, specify the IP that should match this rule.</description>
+		<not_in_table/>
+		<required/>
+	</widget>
+    <widget>
+        <type>range</type>
+        <name>range</name>
+        <label>Range</label>
+        <description>If you selected matching by IP range, you can specify here the range that will match this rule (note that both the start and the end of the range are considered part of the range).</description>
+        <not_in_table/>
+        <required/>
+    </widget>
+	<widget>
+		<type>subnet</type>
+		<name>subnet</name>
+		<label>Subnet</label>
+		<description>If you selected matching by subnet, you can specify here the subnet that will match this rule.</description>
+        <minmask>1</minmask>
+        <maxmask>31</maxmask>
+        <overlap_action>error</overlap_action>
+		<not_in_table/>
+		<required/>
+	</widget>
+	<widget>
+		<type>value_merger</type>
+		<label>Target</label>
+		<merge_or>ip,range,subnet</merge_or>
+	</widget>
+	<widget>
+		<type>radio</type>
+		<name>action</name>
+		<label>Action</label>
+		<value>selected</value>
+		<option>
+			<name>allow</name>
+			<label>Allow all traffic</label>
+		</option>
+        <option>
+            <name>block</name>
+            <label>Block all traffic</label>
+        </option>
+		<option>
+			<name>selected</name>
+			<label>Block the selected protocols</label>
+		</option>
+		<value_enable>selected|protocols</value_enable>
+		<value_disable>allow|protocols</value_disable>
+		<required/>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>protocols</name>
+		<label>Protocols</label>
+		<description>Select the protocols you want to block.</description>
+		<class>ProtocolsSelectWidget</class>
+		<multiple/>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>description</name>
+		<label>Description</label>
+		<description>You may enter a description here for your reference (not parsed).</description>
+		<highlighted/>
+	</widget>
+</element>
+
+</coregui_interface>
+

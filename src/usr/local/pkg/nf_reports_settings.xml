@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+<config>nf_reports_settings</config>
+
+<element>
+	<type>form</type>
+
+    <widget>
+        <type>header</type>
+        <label>Remote logging</label>
+    </widget>
+	<widget>
+		<type>checkbox</type>
+		<name>remote_reports</name>
+		<label>Use remote logging</label>
+		<caption>Archive reports in a remote database</caption>
+		<description>
+			Enable this if you want to archive the content filter reports in a remote database
+			&lt;br/&gt;Download the script to create the database schema: &lt;a href=&quot;/webfilter/webfilter_mysql.sql&quot;&gt;webfilter_mysql.sql&lt;a/&gt;
+			&lt;br&gt;
+			&lt;br&gt;
+			Create a user with all privileges grated on Web Filter database. Example: GRANT ALL PRIVILEGES ON webfilter.* TO 'user'@'%';
+			&lt;br&gt;
+			&lt;br&gt;
+			If you have just upgraded BluePex Web Filter package, then you may need to run the database upgrade script: &lt;a href=&quot;/webfilter/webfilter_mysql_upgrade.sql&quot;&gt;webfilter_mysql_upgrade.sql&lt;a/&gt;
+		</description>
+		<enable_widgets>reports_type,reports_ip,reports_port,reports_user,reports_password,reports_db</enable_widgets>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<default>off</default>
+		<name>log_referer</name>
+		<label>Save reference of urls</label>
+		<caption>Save the reference of urls on the database</caption>
+		<description>
+			Enable webfitler to save the reference of urls on database.
+			&lt;br/&gt;This logs are for the objects loaded on the web page accessed by the user.
+			&lt;br/&gt;The principal url still will be saved on the database.
+		</description>
+	</widget>
+	<widget>
+		<type>select</type>
+		<name>reports_type</name>
+		<label>Server type</label>
+		<description>Select the type of database that the remote server runs.</description>
+		<option>
+			<name>mysql</name>
+			<label>MySQL</label>
+		</option>
+		<required/>
+	</widget>
+	<widget>
+		<type>ip</type>
+		<name>reports_ip</name>
+		<label>Server address</label>
+		<description>Enter the IP address of the remote server.</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>port</type>
+		<name>reports_port</name>
+		<label>Server port</label>
+		<description>Enter the port number to use to connect to the remote server.</description>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>reports_user</name>
+		<label>Server user</label>
+		<description>Enter the user name to use to connect to the remote server.</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>password</type>
+		<name>reports_password</name>
+		<label>Server password</label>
+		<description>Enter the password to use to connect to the remote server.</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>reports_db</name>
+		<label>Server database</label>
+		<description>Enter the database to use to connect to the remote server.</description>
+		<required/>
+	</widget>
+
+	<widget>
+		<type>submit</type>
+		<caption>Save</caption>
+	</widget>
+
+</element>
+
+</coregui_interface>
+

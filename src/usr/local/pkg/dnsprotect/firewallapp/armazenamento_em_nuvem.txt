@@ -1,0 +1,10 @@
+drive.google.com
+onedrive.live.com
+mega.nz
+dropbox.com
+cloud.google.com
+drive.amazonaws.com
+www.box.com
+icloud.com
+adrive.com
+huaweicloud.com

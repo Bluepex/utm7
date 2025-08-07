@@ -1,0 +1,62 @@
+#!/usr/local/bin/python
+#
+# ====================================================================
+# Copyright (C) BluePex Security Solutions - All rights reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary and confidential
+# <desenvolvimento@bluepex.com>, 2015
+# ====================================================================
+#
+
+import sys
+import MySQLdb
+import argparse
+from xml.dom import minidom
+
+def set_parser():
+	parser = argparse.ArgumentParser()
+	parser.add_argument(
+		'-c', dest='categories', 
+		action='store', 
+		default='all', 
+		help='Entry with categorie by number, for more than one use colons eg: 1,33,44. Default is all')
+	
+	return parser.parse_args()
+
+def get_mysqlconnection():
+	try:
+		xmldoc = minidom.parse('/cf/conf/config.xml')
+		mysqlUser = xmldoc.getElementsByTagName('reports_user')
+		mysqlIP = xmldoc.getElementsByTagName('reports_ip')
+		mysqlPass = xmldoc.getElementsByTagName('reports_password')
+		mysqlPort = xmldoc.getElementsByTagName('reports_port')
+		mysqlDb = xmldoc.getElementsByTagName('reports_db')
+		
+		mysqlUser = str(mysqlUser[0].firstChild.nodeValue)
+		mysqlIP = str(mysqlIP[0].firstChild.nodeValue)
+		mysqlPass = str(mysqlPass[0].firstChild.nodeValue)
+		mysqlPort = str(mysqlPort[0].firstChild.nodeValue)
+		mysqlDb = str(mysqlDb[0].firstChild.nodeValue)
+		
+		conn = MySQLdb.connect(mysqlIP,mysqlUser,mysqlPass,mysqlDb)
+	except Exception, error:
+		print >> sys.stdout, "{}".format(error)
+		exit(0)
+	
+	return conn.cursor()
+
+if __name__ == "__main__":
+
+	opts = set_parser()
+	select = get_mysqlconnection()
+	list_cat = select.execute("select id,description from categories")
+	list_cat = select.fetchall()
+
+	if opts.categories == "all":
+		for item in list_cat:
+			print >> sys.stdout, "{}\t{}".format(item[0],item[1])
+	else:
+		categories = [(id,description) for id,description in list_cat for opt in opts.categories.split(',') if str(id) == opt]
+		for item in categories:
+			print >> sys.stdout, "{}\t{}".format(item[0],item[1])
+
