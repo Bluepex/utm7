@@ -132,10 +132,10 @@ get_version ()
 
 get_version
 
-# Read product_name from $g, defaults to pfSense
+# Read product_name from $g, defaults to BluePexUTM
 # Use php -n here because we are not ready to load extensions yet
-product_name=$(/usr/local/bin/php -n /usr/local/sbin/read_global_var product_name pfSense)
-product_label=$(/usr/local/bin/php -n /usr/local/sbin/read_global_var product_label pfSense)
+product_name=$(/usr/local/bin/php -n /usr/local/sbin/read_global_var product_name BluePexUTM)
+product_label=$(/usr/local/bin/php -n /usr/local/sbin/read_global_var product_label BluePexUTM)
 
 # Setup dumpdev/ddb/savecore"
 echo "Configuring crash dumps..."
