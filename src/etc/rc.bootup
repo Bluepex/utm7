@@ -166,7 +166,7 @@ while (is_interface_mismatch() == true) {
 		}
 	}
 	if (set_networking_interfaces_ports() == -1) {
-		echo "\npfSense cannot continue without at least one Network Interface Card.\n";
+		echo "\nBluePexUTM cannot continue without at least one Network Interface Card.\n";
 		echo "\nHalting the system.\n";
 		system("/sbin/shutdown -h now");
 		exit(0);

@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# rc.entra_id
+# ====================================================================
+# Copyright (C) BluePex Security Solutions - All rights reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary and confidential
+# Written by Marcos Claudiano <marcos.claudiano@bluepex.com>, 2024
+# Written by Guilherme R.Brechot <guilherme.brechot@bluepex.com>, 2024
+#
+# ====================================================================
+
+if [ -e /usr/local/bin/.env ]
+then
+	/usr/local/bin/php /usr/local/bin/entraid_sync.php
+fi
