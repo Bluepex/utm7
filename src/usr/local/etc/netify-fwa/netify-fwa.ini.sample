@@ -1,0 +1,15 @@
+[netify-fwa]
+firewall-engine = pfsense
+path-config-dynamic = /usr/local/etc/netify-fwa/netify-fwa.json
+path-status = /var/run/netify-fwa/status.json
+path-status-matches = /var/run/netify-fwa/matches.json
+ttl-match = 1200
+
+[netify-agent]
+socket-uri = unix:///usr/local/var/run/netifyd/netifyd.sock
+
+[netify-api]
+path-app-proto-data = /usr/local/etc/netify-fwa/app-proto-data.json
+path-category-index = /usr/local/etc/netify-fwa/category-index.json
+ttl-category-index = 3600
+url = https://api.netify.ai/api/v1

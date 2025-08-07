@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+
+<include>nf_widgets.inc</include>
+
+<element>
+	<type>form</type>
+
+	<widget>
+		<type>select</type>
+		<name>filter_how</name>
+		<option>
+			<name>contain</name>
+			<label>Only display entries whose URLs contain</label>
+		</option>
+		<option>
+			<name>start_with</name>
+			<label>Only display entries whose URLs start with</label>
+		</option>
+		<option>
+			<name>end_with</name>
+			<label>Only display entries whose URLs end with</label>
+		</option>
+		<option>
+			<name>match_exactly</name>
+			<label>Only display entries whose URLs match exactly</label>
+		</option>
+		<group_start/>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>filter_what</name>
+	</widget>
+
+	<widget>
+		<type>select</type>
+		<name>exclude_how</name>
+		<option>
+			<name>contain</name>
+			<label>Do not display entries whose URLs contain</label>
+		</option>
+		<option>
+			<name>start_with</name>
+			<label>Do not display entries whose URLs start with</label>
+		</option>
+		<option>
+			<name>end_with</name>
+			<label>Do not display entries whose URLs end with</label>
+		</option>
+		<option>
+			<name>match_exactly</name>
+			<label>Do not display entries whose URLs match exactly</label>
+		</option>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>exclude_what</name>
+		<label>Filter</label>
+		<description>You may enter some information in those fields to restrict the scope of the query. Use commas to input more than one filter for each field (e.g.: &quot;www.disney.com, www.google.com&quot;)</description>
+		<group_end/>
+	</widget>
+
+    <widget>
+        <type>select</type>
+        <name>order_what</name>
+        <option>
+            <name>url</name>
+            <label>URL</label>
+        </option>
+        <option>
+            <name>hits</name>
+            <label>Hits</label>
+        </option>
+        <option>
+            <name>size</name>
+            <label>Bandwidth used</label>
+        </option>
+        <option>
+            <name>elapsed</name>
+            <label>Elapsed time</label>
+        </option>
+        <value>hits</value>
+        <group_start/>
+    </widget>
+    <widget>
+        <type>select</type>
+        <name>order_how</name>
+        <option>
+            <name>asc</name>
+            <label>ascending</label>
+        </option>
+        <option>
+            <name>desc</name>
+            <label>descending</label>
+        </option>
+        <value>desc</value>
+        <label>Order by</label>
+        <description>Specify the order in which the records will be displayed</description>
+        <group_end/>
+    </widget>
+
+	<widget>
+		<type>submit</type>
+		<caption>Query</caption>
+		<group_start/>
+	</widget>
+	<widget>
+		<type>submit</type>
+		<name>export_csv</name>
+		<caption>Export CSV</caption>
+		<group_end/>
+	</widget>
+
+	<widget>
+		<type>report</type>
+		<backend>NetfilterContentReportBackend</backend>
+	</widget>
+
+</element>
+
+</coregui_interface>
+

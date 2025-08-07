@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+# PROVIDE: wfrotated
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+
+. /etc/rc.subr
+
+name=wfrotated
+rcvar=wfrotated_enable
+desc="RCFile for the daemon wfrotated"
+
+load_rc_config ${name}
+
+: ${wfrotated_enable:=NO}
+
+command_interpreter=/usr/local/bin/python3.11
+command=/usr/local/sbin/wfrotated
+pidfile="/var/run/${name}.pid"
+
+run_rc_command "$1"

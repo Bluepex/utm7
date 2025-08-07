@@ -1,0 +1,13 @@
+amazon.co.uk
+amazon.de
+amazon.in
+aws.amazon.com
+amazon.com.br
+amazonaws.com
+amazon.com
+s3.amazonaws.com
+sdb.amazonaws.com
+drive.amazonaws.com
+images-na.ssl-images-amazon.com
+m.media-amazon.com
+api.amazon.com

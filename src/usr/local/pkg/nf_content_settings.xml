@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+<config>nf_content_settings</config>
+
+<element>
+	<type>form</type>
+	<on_apply_event>NetfilterContentSettingsResync</on_apply_event>
+
+	<widget>
+		<type>header</type>
+		<label>General settings</label>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<name>enable</name>
+		<label>Enable content filter</label>
+		<caption>Enable the BluePex content filter</caption>
+		<description>Check this to enable the BluePex content filter. Note that you most likely also need to configure the content filter rules.</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<name>enable_emergency</name>
+		<label>Enable high disponibility</label>
+		<caption>Enable the BluePex high disponibility</caption>
+		<description>Check this to enable the BluePex high disponibility. This options allow the BluePex WebFilter work in the emergency mode, this will allow the proxy keep working if the redirectors don't work..</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>content_filter_processes</name>
+		<label>Content filter number processes</label>
+		<description>Enter with number process Content Filter.</description>
+		<size>5</size>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<name>use_custom_urls</name>
+		<label>Redirect to custom URL</label>
+		<caption>Redirect to custom URL</caption>
+		<description>If you enable this, you will be allowed to specify the page that users will be redirected when their access is denied. Note that the URL you specify must be accessible by all users that are subject to filtering. You might want to add those URLs to the whitelist to ensure this is always the case.</description>
+		<enable_widgets>custom_content_url</enable_widgets>
+	</widget>
+	<widget>
+		<type>url</type>
+		<name>custom_content_url</name>
+		<label>Custom URL</label>
+		<description>Enter the URL that users will be redirected to when trying to access a blocked URL.</description>
+		<required/>
+	</widget>
+	<widget>
+		<type>submit</type>
+		<caption>Save</caption>
+	</widget>
+</element>
+
+</coregui_interface>
+
