@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+
+<include>nf_widgets.inc</include>
+
+<element>
+	<type>form</type>
+
+	<widget>
+		<type>header</type>
+		<label>License information</label>
+	</widget>
+
+	<widget>
+		<type>custom</type>
+		<label>License</label>
+		<class>NetfilterLicenseStatusWidget</class>
+	</widget>
+
+</element>
+
+</coregui_interface>
+

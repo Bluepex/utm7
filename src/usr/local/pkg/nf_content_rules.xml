@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+<config>nf_content_rules</config>
+
+<include>nf_widgets.inc</include>
+<include_css>netfilter.css</include_css>
+<include_javascript>webfilter/jquery.js</include_javascript>
+
+<element>
+	<type>table</type>
+	<buttons>move,edit,delete,add</buttons>
+    <no_entries_text>No content rules are currently defined.&lt;br /&gt;All traffic will be allowed until you add a rule.</no_entries_text>
+
+	<on_apply_event>NetfilterContentRulesResync</on_apply_event>
+	<on_save_javascript>calcular_horarios_salvamento();</on_save_javascript>
+
+    <widget>
+        <type>checkbox</type>
+        <name>disabled</name>
+        <label>Disabled</label>
+        <caption>&lt;strong&gt;Disable this rule&lt;/strong&gt;</caption>
+        <description>Set this option to disable this rule without removing it from the list</description>
+        <not_in_table/>
+    </widget>
+	<widget>
+		<type>select</type>
+		<name>type</name>
+		<label>Match</label>
+		<description>Select how this rule will match the connections.</description>
+		<value>default</value>
+		<option>
+			<name>default</name>
+			<label>All</label>
+		</option>
+		<option>
+			<name>users</name>
+			<label>User names</label>
+		</option>
+		<option>
+			<name>groups</name>
+			<label>User groups</label>
+		</option>
+		<option>
+			<name>ip</name>
+			<label>IP address</label>
+		</option>
+        <option>
+            <name>range</name>
+            <label>IP range</label>
+        </option>
+		<option>
+			<name>subnet</name>
+			<label>Subnet</label>
+		</option>
+		<value_enable>users|users,groups|groups,ip|ip,range|range,subnet|subnet</value_enable>
+        <value_disable>default|users,default|groups,default|ip,default|range,default|subnet,users|groups,users|ip,users|range,users|subnet,groups|users,groups|ip,groups|range,groups|subnet,ip|users,ip|groups,ip|range,ip|subnet,range|users,range|groups,range|ip,range|subnet,subnet|users,subnet|groups,subnet|ip,subnet|range</value_disable>
+		<required/>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>users</name>
+		<label>Users</label>
+		<description>If you selected matching by user name, select here the users you want to match.</description>
+		<class>UsersSelectWidget</class>
+		<multiple/>
+		<required/>
+		<not_in_table/>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>groups</name>
+		<label>Groups</label>
+		<description>If you selected matching by user group, select here the groups you want to match.</description>
+		<class>GroupsSelectWidget</class>
+		<multiple/>
+		<required/>
+		<not_in_table/>
+	</widget>
+	<widget>
+		<type>ip</type>
+		<name>ip</name>
+		<label>IP address</label>
+		<description>For matching by IP, specify the IP that should match this rule.</description>
+		<not_in_table/>
+		<required/>
+	</widget>
+    <widget>
+        <type>range</type>
+        <name>range</name>
+        <label>Range</label>
+        <description>If you selected matching by IP range, you can specify here the range that will match this rule (note that both the start and the end of the range are considered part of the range).</description>
+        <not_in_table/>
+        <required/>
+    </widget>
+	<widget>
+		<type>subnet</type>
+		<name>subnet</name>
+		<label>Subnet</label>
+		<description>If you selected matching by subnet, you can specify here the subnet that will match this rule.</description>
+        <minmask>1</minmask>
+        <maxmask>31</maxmask>
+        <overlap_action>error</overlap_action>
+		<not_in_table/>
+		<required/>
+	</widget>
+	<widget>
+		<type>value_merger</type>
+		<label>Target</label>
+		<merge_or>users,groups,ip,range,subnet</merge_or>
+	</widget>
+	<widget>
+		<type>radio</type>
+		<name>action</name>
+		<label>Action</label>
+		<value>selected</value>
+		<option>
+			<name>allow</name>
+			<label>Allow all content</label>
+		</option>
+		<option>
+			<name>block</name>
+			<label>Block all content</label>
+		</option>
+		<option>
+			<name>selected</name>
+			<label>Block the selected categories</label>
+		</option>
+		<value_enable>selected|categories</value_enable>
+		<value_disable>allow|categories,block|categories</value_disable>
+		<required/>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>categories</name>
+		<label>Content categories</label>
+		<description>Select the categories you want to block.</description>
+		<class>CategoriesSelectWidget</class>
+		<multiple/>
+		<not_in_table/>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<name>whitelist</name>
+		<caption>Apply the whitelist to this rule</caption>
+		<value>on</value>
+		<table_value>Whitelist,</table_value>
+		<not_in_table/>
+		<group_start/>
+	</widget>
+	<widget>
+		<type>linebreak</type>
+		<not_in_table/>
+	</widget>
+	<widget>
+		<type>checkbox</type>
+		<name>blacklist</name>
+		<label>Local lists</label>
+		<caption>Apply the blacklist to this rule</caption>
+		<description>If those checkboxes are enabled, the whitelist and/or the blacklist will be used for this rule. Note that the whitelist takes precedence over the blacklist.</description>
+		<value>on</value>
+		<table_value>Blacklist,</table_value>
+		<not_in_table/>
+		<group_end/>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>custom_lists</name>
+		<label>Custom lists</label>
+		<description>Select how each custom list will affect this rule (as a whitelist, a blacklist or not affect at all).</description>
+		<class>CustomListWidget</class>
+		<not_in_table/>
+	</widget>
+	<widget>
+		<type>value_merger</type>
+		<label>Categories</label>
+		<merge_and>categories,whitelist,blacklist</merge_and>
+	</widget>
+	<widget>
+		<type>custom</type>
+		<name>time_match</name>
+		<label>Activation periods</label>
+		<description>Select the periods of time when this rule will be active.</description>
+		<class>TimeSelectWidget</class>
+	</widget>
+	<widget>
+		<type>textbox</type>
+		<name>description</name>
+		<label>Description</label>
+		<description>You may enter a description here, for your reference (not parsed).</description>
+		<highlighted/>
+		<required/>
+	</widget>
+</element>
+
+</coregui_interface>
+

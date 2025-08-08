@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE packagegui SYSTEM "./schema/packages.dtd">
+<?xml-stylesheet type="text/xsl" href="./xsl/package.xsl"?>
+<packagegui>
+	<copyright>
+	<![CDATA[
+/* $Id$ */
+/* ========================================================================== */
+/*
+    webfilter_tools.xml
+    part of the WebFilter package for BluePex UTM
+    Copyright (C) 2013 BluePex Controle
+    All rights reserved.            
+                                                                  */
+/* ========================================================================== */
+/*
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+     1. Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.
+
+     2. Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+    OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+                                                                              */
+/* ========================================================================== */
+	]]>
+	</copyright>
+	<description>Describe your package here</description>
+	<requirements>Describe your package requirements here</requirements>
+	<faq>Currently there are no FAQ items provided.</faq>
+	<name>squidsync</name>
+	<version>1.0</version>
+	<title>BluePex Web Filter: Tools</title>
+	<include_file>/usr/local/pkg/squid.inc</include_file>
+	<tabs>
+		<tab>
+			<text>Realtime</text>
+			<url>/webfilter/wf_realtime.php</url>
+		</tab>
+		<tab>
+			<text>WF Diagnostic</text>
+			<url>/webfilter/wf_diagnostic.php</url>
+		</tab>
+		<tab>
+			<text>Clean Cache</text>
+			<url>/webfilter/wf_cleancache.php</url>
+		</tab>
+		<tab>
+			<text>Webfilter Sync</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=webfilter_tools.xml&amp;id=0</url>
+			<active/>
+		</tab>
+		<tab>
+			<text>Update Content</text>
+			<url>/webfilter/wf_updatecontent.php</url>
+		</tab>
+	</tabs>
+	<fields>
+		<field>
+			<name>Webfilter Sync</name>
+			<type>listtopic</type>
+		</field>
+		<field>
+			<fielddescr>Automatically sync webfilter configuration changes</fielddescr>
+			<fieldname>synconchanges</fieldname>
+			<description>Select a sync method for squid.</description>
+			<type>select</type>
+			<required/>
+			<default_value>auto</default_value>
+			<options>
+				<option><name>Do not sync this package</name><value>disabled</value></option>
+				<option><name>Sync Carp Settings</name><value>auto</value></option>
+				<option><name>Sync to host(s) defined below</name><value>manual</value></option>
+			</options>
+		</field>
+		<field>
+			<fielddescr>Not Sync Section</fielddescr>
+			<fieldname>notsyncsection</fieldname>
+			<description>Select the sections that will not be synchronized</description>
+			<type>select</type>
+			<multiple/>
+			<options>
+				<option><name>Content - Rules</name><value>nf_content_rules</value></option>
+				<option><name>Content - Whitelist</name><value>nf_content_whitelist</value></option>
+				<option><name>Content - Blacklist</name><value>nf_content_blacklist</value></option>
+				<option><name>Content - Custom List</name><value>nf_content_custom</value></option>
+				<option><name>Content - Settings</name><value>nf_content_settings</value></option>
+				<option><name>Protocols</name><value>nf_protocol_rules</value></option>
+				<option><name>Proxy Server - General</name><value>squid</value></option>
+				<option><name>Proxy Server - Upstream Proxy</name><value>squidupstream</value></option>
+				<option><name>Proxy Server - Cache Mgmt</name><value>squidcache</value></option>
+				<option><name>Proxy Server - Access Control</name><value>squidnac</value></option>
+				<option><name>Proxy Server - Traffic Mgmt</name><value>squidtraffic</value></option>
+				<option><name>Proxy Server - Auth Settings</name><value>squidauth</value></option>
+			</options>
+			<size>10</size>
+		</field>
+		<field>
+			<fielddescr>Sync timeout (seconds)</fielddescr>
+			<fieldname>synctimeout</fieldname>
+			<description>Select sync max wait time</description>
+			<type>select</type>
+			<required/>
+			<default_value>250</default_value>
+			<options>
+				<option><name>250</name><value>250</value></option>
+				<option><name>120</name><value>120</value></option>
+				<option><name>90</name><value>90</value></option>
+				<option><name>60</name><value>60</value></option>
+				<option><name>30</name><value>30</value></option>
+			</options>
+		</field>
+		<field>
+			<fielddescr>Remote Server</fielddescr>
+			<fieldname>none</fieldname>
+			<type>rowhelper</type>
+			<rowhelper>
+			<rowhelperfield>
+				<fielddescr>IP Address</fielddescr>
+				<fieldname>ipaddress</fieldname>
+				<description>IP Address of remote server</description>
+				<type>input</type>
+				<size>20</size>
+			</rowhelperfield>
+			<rowhelperfield>
+				<fielddescr>Password</fielddescr>
+				<fieldname>password</fieldname>
+				<description>Password for remote server.</description>
+				<type>password</type>
+				<size>20</size>
+			</rowhelperfield>
+			</rowhelper>
+			<xmlrpcsync_status/>
+		</field>
+	</fields>
+	<custom_php_validation_command>
+	</custom_php_validation_command>
+	<custom_php_resync_config_command>
+		squid_resync();
+	</custom_php_resync_config_command>
+</packagegui>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_master>
+<version>2.0</version>
+
+<include>nf_reports.inc</include>
+
+<title>BluePex Web Filter reports</title>
+
+<tab>
+	<label>DataClick</label>
+	<url>/webfilter/wf_dataclick_settings.php</url>
+</tab>
+<tab>
+	<label>Connection Test</label>
+	<url>/webfilter/wf_test_connection.php</url>
+</tab>
+<tab>
+	<label>Settings</label>
+	<interface>nf_reports_settings.xml</interface>
+</tab>
+</coregui_master>
+

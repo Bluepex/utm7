@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE packagegui SYSTEM "../schema/packages.dtd">
+<?xml-stylesheet type="text/xsl" href="../xsl/package.xsl"?>
+<packagegui>
+        <copyright>
+        <![CDATA[
+/* $Id$ */
+/* ========================================================================== */
+/*
+    authng.xml
+    part of pfSense (http://www.pfSense.com)
+    Copyright (C) 2007 to whom it may belong
+    Copyright (C) 2012-2013 Marcello Coutinho
+    All rights reserved.
+
+    Based on m0n0wall (http://m0n0.ch/wall)
+    Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+    All rights reserved.
+                                                                              */
+/* ========================================================================== */
+/*
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+     1. Redistributions of source code MUST retain the above copyright notice,
+        this list of conditions and the following disclaimer.
+
+     2. Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+    OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+                                                                              */
+/* ========================================================================== */
+        ]]>
+        </copyright>
+    <description>Describe your package here</description>
+    <requirements>Describe your package requirements here</requirements>
+    <faq>Currently there are no FAQ items provided.</faq>
+	<name>squidauth</name>
+	<version>none</version>
+	<title>Proxy server: Authentication</title>
+	<include_file>squid.inc</include_file>
+	<tabs>
+		<tab>
+			<text>General</text>
+			<url>/webfilter/wf_server.php</url>
+		</tab>
+		<tab>
+			<text>Upstream Proxy</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=squid_upstream.xml&amp;id=0</url>
+		</tab>
+		<tab>
+			<text>Cache Mgmt</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=squid_cache.xml&amp;id=0</url>
+			<noembedded/>
+		</tab>
+		<tab>
+			<text>Access Control</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=squid_nac.xml&amp;id=0</url>
+		</tab>
+		<tab>
+			<text>Traffic Mgmt</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=squid_traffic.xml&amp;id=0</url>
+		</tab>
+		<tab>
+			<text>Auth Settings</text>
+			<url>/webfilter/wf_pkg_edit.php?xml=squid_auth.xml&amp;id=0</url>
+			<active/>
+		</tab>
+                <tab>
+                        <text>NEW Auth</text>
+                        <url>/webfilter/wf_auth_settings.php</url>
+                </tab>
+	</tabs>
+	<fields>
+		<field>
+			<fielddescr>Authentication method</fielddescr>
+			<fieldname>auth_method</fieldname>
+			<description>Select an authentication method. This will allow users to be authenticated by local or external services.</description>
+			<type>select</type>
+			<required/>
+			<default_value>none</default_value>
+			<options>
+				<option><name>None</name><value>none</value></option>
+				<option><name>User Manager</name><value>usermanager</value></option>
+				<option><name>Single Sign On (SSO)</name><value>ntlm</value></option>
+			</options>
+			<onchange>on_auth_method_changed()</onchange>
+		</field>
+		<field>
+			<fielddescr>Authentication server</fielddescr>
+			<fieldname>auth_server</fieldname>
+			<description>Enter here the IP or hostname of the server that will perform the authentication.</description>
+			<type>input</type>
+			<size>60</size>
+		</field>
+		<field>
+			<fielddescr>Name server</fielddescr>
+			<fieldname>name_server</fieldname>
+			<description>Enter the name of the server to add the server host name into internal dns.</description>
+			<type>input</type>
+			<size>60</size>
+		</field>
+		<field>
+				<fielddescr>Log details</fielddescr>
+				<fieldname>log_detail</fieldname>
+				<description>Define the log details for authentication logs. Default is 3. The greater this value is, more detail will be put in the log file</description>
+				<type>select</type>
+				<default_value>3</default_value>
+				<options>
+						<option><name>Default</name><value></value></option>
+						<option><name>0</name><value>0</value></option>
+						<option><name>1</name><value>1</value></option>
+						<option><name>2</name><value>2</value></option>
+						<option><name>3</name><value>3</value></option>
+						<option><name>4</name><value>4</value></option>
+						<option><name>5</name><value>5</value></option>
+						<option><name>6</name><value>6</value></option>
+						<option><name>7</name><value>7</value></option>
+						<option><name>8</name><value>8</value></option>
+						<option><name>9</name><value>9</value></option>
+						<option><name>10</name><value>10</value></option>
+				</options>
+		</field>
+		<field>
+			<fielddescr>NT domain</fielddescr>
+			<fieldname>auth_ntdomain</fieldname>
+			<description>Enter here the NT domain.</description>
+			<type>input</type>
+			<size>60</size>
+		</field>
+		<field>
+			<fielddescr>Workgroup</fielddescr>
+			<fieldname>auth_workgroup</fieldname>
+			<description>Enter here the Workgroup.</description>
+			<type>input</type>
+			<size>60</size>
+		</field>
+		<field>
+			<fielddescr>SSO User</fielddescr>
+			<fieldname>ntlm_user</fieldname>
+			<description>Enter here the user to use to connect to the domain server.</description>
+			<type>input</type>
+			<size>60</size>
+		</field>
+		<field>
+			<fielddescr>SSO password</fielddescr>
+			<fieldname>ntlm_password</fieldname>
+			<description>Enter here the password to user to connect to the domain server.</description>
+			<type>password</type>
+			<size>60</size>
+		</field>
+		<field>
+			<fielddescr>Authentication prompt</fielddescr>
+			<fieldname>auth_prompt</fieldname>
+			<description>This string will be displayed at the top of the authentication request window.</description>
+			<type>input</type>
+			<default_value>Please enter your credentials to access the proxy</default_value>
+		</field>
+		<field>
+			<fielddescr>Authentication processes</fielddescr>
+			<fieldname>auth_processes</fieldname>
+			<description>The number of authenticator processes to spawn. If many authentications are expected within a short timeframe, increase this number accordingly.</description>
+			<type>input</type>
+			<size>60</size>
+			<default_value>5</default_value>
+		</field>
+		<field>
+			<fielddescr>Authentication TTL</fielddescr>
+			<fieldname>auth_ttl</fieldname>
+			<description>This specifies for how long (in minutes) the proxy server assumes an externally validated username and password combination is valid (Time To Live).  When the TTL expires, the user will be prompted for credentials again.</description>
+			<type>input</type>
+			<size>60</size>
+			<default_value>60</default_value>
+		</field>
+		<field>
+			<fielddescr>Case sensitive authentication</fielddescr>
+			<fieldname>auth_casesensitive</fieldname>
+			<description>If this option is enabled, the username become case sensitive.</description>
+			<type>checkbox</type>
+		</field>
+		<field>
+			<fielddescr>Idmap uid</fielddescr>
+			<fieldname>auth_idmap_uid</fieldname>
+			<description>The Idmap plugin provides a way for Winbind to read id mappings from an AD server that uses RFC2307/SFU schema extensions. Enter with uidNumber attributes for users and groups in the AD. E.g: 10000-20000.</description>
+			<type>input</type>
+			<size>10</size>
+			<default_value>10000-20000</default_value>
+		</field>
+		<field>
+			<fielddescr>Requiere authentication for unrestricted hosts</fielddescr>
+			<fieldname>unrestricted_auth</fieldname>
+			<description>If this option is enabled, even users tagged as unrestricted through access control are required to authenticate to use the proxy.</description>
+			<type>checkbox</type>
+		</field>
+		<field>
+			<fielddescr>Subnets that don't need authentication</fielddescr>
+			<fieldname>no_auth_hosts</fieldname>
+			<description>Enter each subnet or IP address on a new line (in CIDR format, e.g.: 10.5.0.0/16, 192.168.1.50/32) that should not be asked for authentication to access the proxy.</description>
+			<type>textarea</type>
+			<cols>50</cols>
+			<rows>5</rows>
+			<encoding>base64</encoding>
+		</field>
+	</fields>
+	<custom_php_validation_command>
+		squid_validate_auth($_POST, $input_errors);
+	</custom_php_validation_command>
+	<custom_php_after_form_command>
+		squid_print_javascript_auth2();
+	</custom_php_after_form_command>
+	<custom_php_resync_config_command>
+		squid_resync();
+	</custom_php_resync_config_command>
+	<custom_php_before_form_command>
+		squid_print_javascript_auth2();
+	</custom_php_before_form_command>
+	<custom_php_after_head_command>
+		$transparent_proxy = ($config['system']['webfilter']['squid']['config'][0]['transparent_proxy'] == 'on');
+		if($transparent_proxy)
+			$input_errors[] = "Authentication cannot be enabled while transparent proxy mode is enabled";
+		squid_print_javascript_auth();
+	</custom_php_after_head_command>
+</packagegui>

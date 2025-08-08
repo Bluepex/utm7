@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_interface>
+
+<include>nf_widgets.inc</include>
+
+<element>
+	<type>form</type>
+
+	<widget>
+		<type>select</type>
+		<name>match</name>
+		<label>Match</label>
+		<description>Select whether this query will match a specific user or IP address.</description>
+		<option>
+			<name>any</name>
+			<label>Any</label>
+		</option>
+		<option>
+			<name>user</name>
+			<label>User</label>
+		</option>
+		<option>
+			<name>ip</name>
+			<label>IP</label>
+		</option>
+		<value_enable>user|user,ip|ip</value_enable>
+		<value_disable>any|user,any|ip,user|ip,ip|user</value_disable>
+		<required/>
+	</widget>
+
+	<widget>
+		<type>custom</type>
+		<name>user</name>
+		<label>User</label>
+		<description>Select which user this query will match.</description>
+		<class>UsersSelectWidget</class>
+		<required/>
+	</widget>
+
+	<widget>
+		<type>ip</type>
+		<name>ip</name>
+		<label>IP</label>
+		<description>Enter the IP that this query will match.</description>
+		<required/>
+	</widget>
+
+	<widget>
+		<type>timestamp</type>
+		<name>from</name>
+		<label>From</label>
+		<description>Enter the starting date of this query.</description>
+		<value>last_year</value>
+		<required/>
+	</widget>
+
+	<widget>
+		<type>timestamp</type>
+		<name>upto</name>
+		<label>Up to</label>
+		<description>Enter the ending date of this query.</description>
+		<value>now</value>
+		<required/>
+	</widget>
+
+    <widget>
+        <type>select</type>
+        <name>order_what</name>
+        <option>
+            <name>date</name>
+            <label>Date</label>
+        </option>
+        <option>
+            <name>user</name>
+            <label>User</label>
+        </option>
+        <option>
+            <name>ip</name>
+            <label>IP</label>
+        </option>
+        <option>
+            <name>elapsed</name>
+            <label>Elapsed time</label>
+        </option>
+        <option>
+            <name>bytes</name>
+            <label>Bytes</label>
+        </option>
+        <value>date</value>
+        <group_start/>
+    </widget>
+    <widget>
+        <type>select</type>
+        <name>order_how</name>
+        <option>
+            <name>asc</name>
+            <label>ascending</label>
+        </option>
+        <option>
+            <name>desc</name>
+            <label>descending</label>
+        </option>
+        <value>desc</value>
+        <label>Order by</label>
+        <description>Specify the order in which the records will be displayed</description>
+        <group_end/>
+    </widget>
+
+	<widget>
+		<type>submit</type>
+		<caption>Query</caption>
+		<group_start/>
+	</widget>
+	<widget>
+		<type>submit</type>
+		<name>export_csv</name>
+		<caption>Export CSV</caption>
+		<group_end/>
+	</widget>
+
+	<widget>
+		<type>report</type>
+		<backend>NetfilterContentReportBackend</backend>
+	</widget>
+
+</element>
+
+</coregui_interface>
+

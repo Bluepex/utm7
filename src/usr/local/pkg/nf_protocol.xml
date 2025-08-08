@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<coregui_master>
+<version>2.0</version>
+
+<include>nf_config.inc</include>
+
+<title>BluePex Web Filter protocol filter</title>
+
+<tab>
+	<label>Rules</label>
+	<interface>nf_protocol_rules.xml</interface>
+</tab>
+
+</coregui_master>
+
